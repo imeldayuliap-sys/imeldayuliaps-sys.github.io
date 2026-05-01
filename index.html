@@ -32,6 +32,7 @@
           color: var(--text); 
           overflow: hidden; 
           width: 100%;
+          background-color: var(--bg-light);
         }
 
          .container {
@@ -39,13 +40,6 @@
              max-width :450px;
              margin: 0 auto;
              padding: 0 20px;
-        }
-
-        body {
-          font-family: 'Montserrat', sans-serif;
-          color: var(--text);
-          overflow-x: hidden;
-          background-color: var(--bg-light);
         }
 
         /* --- 1. COVER OVERLAY --- */
@@ -114,21 +108,24 @@
           color: #fb6f92;
         }
         .rotate { 
-          animation: spin 4s linear infinite; }
+          animation: spin 4s linear infinite;
+          }
+
         @keyframes spin { 100% { 
           transform: rotate(360deg); } }
 
         /* --- 3. SECTIONS BACKGROUNDS --- */
         section { 
-          padding: 80px 20px; 
+          padding: 80px 0; 
           text-align: center; 
           min-height: 100vh; 
           display: flex; 
           flex-direction: column; 
           justify-content: center; 
           align-items: center; 
-          overflow: hidden; }
-        
+          overflow: hidden;
+          }
+ 
         /* Background Hero - Parallax */
         .hero-section { 
             background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('cover.jpeg') center/cover no-repeat fixed; 
@@ -139,6 +136,23 @@
             background-image: url('cover.jpeg');
             background-size: cover;
             opacity: 0.8;
+            position: relative;
+        }
+
+        .acara::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(255,255,255,0.7);
+          z-index: 0;
+        }
+
+        .acara.container {
+          position: relative;
+          z-index: 1;
         }
 
         /* Background Galeri */
@@ -148,8 +162,9 @@
         #rsvp { 
           background-image: url('cover.jpeg'); 
           background-repeat: repeat;
-          background-size: 600px;
+          background-size: 300px;
           opacity: 0.8;
+          position: relative;
         }
 
         /* Background Gift - Textured */
@@ -160,13 +175,6 @@
           
         }
 
-       .floral-decoration {
-         display: block;
-         margin: 0 auto 20px;
-         width: 60px;
-         opacity: 0.7;
-       }
-
         /* Ayat */
         .ayat-section {
           position: relative;
@@ -174,11 +182,9 @@
           height: 100vh;
           background-size: cover;
           background-position: center;
-          background-repeat: no-repeat;
           display: flex;
           align-items: center;
           justify-content: center;
-          overflow: hidden;
         }
 
        /* Overlay section ayat */
@@ -186,7 +192,7 @@
          content:'';
          position: absolute;
          top: 0; left: 0; width: 100%; height: 100%;
-         background: rgba(0,0,0,0.4);
+         background: rgba(0,0,0,0.5);
          z-index: 1;
         }
 
@@ -198,20 +204,20 @@
          backdrop-filter: blur(10px);
          -webkit-backdrop-filter: blur(10px);
          border: 1px solid  rgba(255,255,255,0.3);
-         padding: 40px 30px;
+         padding: 40px 20px;
          width: 85%;
          max-width: 400px;
          height: auto;
-         border-radius: 250px 250px 20px 20px;
+         border-radius: 150px 150px 20px 20px;
          color: white;
          text-align: center;
          box-shadow: 0 10px 30px rgba(0,0,0,0.2);
        }
 
         .verse-photo-frame {
-          width: 300px;
-          height: 450px;
-          border-radius: 50%;
+          width: 200px;
+          height: 300px;
+          border-radius: 100px;
           border: 3px solid white;
           overflow: hidden;
           margin: 0 auto 30px;
@@ -248,7 +254,7 @@
 
        /* Salam Sapa Section */
        .salam-section {
-         padding: 100px 30px;
+         padding: 80px 20px;
          background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('couple.png') center/cover no-repeat fixed;
          text-align: center;
          position: relative;
@@ -302,13 +308,13 @@
 
        /* Bingkai profil */
        .frame-oval-catin {
-         width: 450px;
-         height: 550px;
-         border-radius: 225px;
+         width: 260px;
+         height: 380px;
+         border-radius: 130px;
          border: 6px solid white;
          overflow: hidden;
          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-         margin-bottom: 25px;
+         margin: o auto 25px;
          z-index: 2;
        }
 
@@ -384,17 +390,19 @@
           background: rgba(255, 255, 255, 0.95); 
           border-radius: 20px; 
           padding: 25px; 
-          margin-bottom: 20px; 
+          margin: o auto 20px;
           border: 1px solid var(--watermelon); 
           box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
           width: 100%; 
-          max-width: 400px; 
+          max-width: 380px; 
           backdrop-filter: blur(5px); }
+ 
         h2 { 
           font-family: 'Playfair Display', serif; 
           font-size: 2.2rem; 
           margin-bottom: 20px; 
           color: #fb6f92; }
+ 
         h3 { 
           font-family: 'Playfair Display', serif; 
           color: var(--watermelon); 
@@ -404,7 +412,7 @@
         .countdown-wrapper { 
           display: grid; 
           grid-template-columns: repeat(4, 1fr); 
-          gap: 10px; 
+          gap: 8px; 
           width: 100%; 
           max-width: 450px;
           }
@@ -412,11 +420,11 @@
           background: white; 
           border: 1px solid var(--lpink); 
           border-radius: 10px; 
-          padding: 10px 5px;
+          padding: 10px 2px;
           }
         .timer-box span { 
           display: block; 
-          font-size: 1.2rem; 
+          font-size: 1.1rem; 
           font-weight: bold; 
           color: var(--watermelon);
           }
@@ -461,7 +469,7 @@
          .btn-maps {
            background-color: var(--watermelon);
            color: white !important;
-           padding: 15px 30px;
+           padding: 12px 25px;
            border-radius: 50px;
            text-decoration: none;
            display: inline-flex;
@@ -494,14 +502,17 @@
         /* --- GALLERY --- */
         .gallery-grid { 
           display: grid; 
-          grid-template-columns: repeat(4, 1fr); 
+          grid-template-columns: repeat(2, 1fr); 
           gap: 10px; 
           width: 100%;
+          padding: 0 10px;
           }
+
         .gallery-item { 
           height: 150px; 
           border-radius: 10px; 
           overflow: hidden; }
+
         .gallery-item img { 
           width: 100%; 
           height: 100%; 
@@ -516,9 +527,11 @@
           margin: 20px auto; 
           max-width: 350px;
           }
+
         .timeline-item { 
           margin-bottom: 25px; 
           position: relative; }
+
         .timeline-item::before { 
           content:''; 
           position: absolute; 
@@ -537,6 +550,7 @@
           margin-top: 20px; 
           padding-right: 5px;
           }
+
         .comment-item { 
           background: white; 
           padding: 15px; 
@@ -564,10 +578,10 @@
           background: white;
           border: 1px solid var(--lavenderb);
           border-radius: 20px;
-          padding: 10px 20px;
+          padding: 20px;
           box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-          margin-bottom: 30px;
-          max-width: 400px;
+          margin: 0 auto 20px;
+          max-width: 380px;
           width: 100%;
         }
  
@@ -583,16 +597,17 @@
 
         .bank-row {
           display: flex;
-          align-items: 15px 0;
+          align-items: center;
+          padding: 15px 0;
           text-align: left;
         }
 
         .bank-row:not(:last-child) {
-          border-bottom: 1px dashed var(--lavenderb);
+          border-bottom: 1px solid var(--lavenderb);
         }
 
         .bank-logo-box {
-          flex: 0 0 70px;
+          flex: 0 0 60px;
           margin-right: 15px;
         }
 
@@ -619,11 +634,12 @@
         .closing-box {
           padding: 40 20px;
           border: 1px solid var(--lpink);
-          border-radius: 50px 0 50px 0;
+          border-radius: 50px 0;
           background-color: white;
           box-shadow: 0 10px 30px rgba(0,0,0,0.05);
           position: relative;
           overflow: hidden;
+          margin: 0 auto;
         }
 
         .closing-box::before {
@@ -700,7 +716,7 @@
       </section>
 
         <div class="catin-profil-container">
-          <section class="catin-section-new">
+          <section class="catin-section-new" style="padding: 40px 0;">
             <div class="frame-oval-catin" data-aos="zoom-in">
               <img src="cpw.png" alt="Mempelai Wanita">
             </div>
@@ -719,7 +735,7 @@
         <img src="hiasan.png" class="floral-decoration" style="left: -30px; transform: scaleX(-1);">
           </section>
 
-        <section class="catin-section-new">
+        <section class="catin-section-new" style="padding: 40px 0;">
           <div class="frame-oval-catin" data-aos="zoom-in">
             <img src="cpp.png" alt="Mempelai Pria">
           </div>
@@ -852,85 +868,87 @@
         </section>
 
         <section id="gift">
-          <div class="container">
-            <h2 data-aos="fade-up">Wedding Gift</h2>
-            <p data-aos="fade-up" style="margin-bottom:30px;">Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan kasih Anda, Anda dapat memberi kado secara cashless:</p>
+           <div class="container">
+             <h2 data-aos="fade-up">Wedding Gift</h2>
+             <p data-aos="fade-up" style="margin-bottom:30px;">Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan kasih Anda, Anda dapat memberi kado secara cashless:</p>
 
-            <div data-aos="zoom-in">
-              <div class="gift-container-box">
-                <span class="gift-owner-title"> A.n Imelda Yulia Putri</span>
-                <div class="bank-row">
-                  <div class="bank-logo-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA">
-                  </div>
-                  <div class="bank-details">
-                    <p class="bank-name" style="font-size: 0.8rem; color; #888;">Bank BCA</p>
-                    <p id="noRekImelda" class="acc-number text-bca">4373191216</p>
-                    <button class="btn-action btn-copy" onclick="copyRek('noRekImelda', 'copymsg1')" style="pading: 4px 12px; font-size: 11px; margin-top: 5px;">Salin</button>
-                    <span id="copyMsg1" style="font-size: 10px; color: var(--lpink); opacity: 0; margin-left: 5px;">Tersalin!</span>
-                  </div>
-                </div>
+             <div data-aos="zoom-in">
+               <div class="gift-container-box">
+                 <span class="gift-owner-title"> A.n Imelda Yulia Putri</span>
+                 <div class="bank-row">
+                   <div class="bank-logo-box">
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA">
+                   </div>
+                   <div class="bank-details">
+                     <p class="bank-name" style="font-size: 0.8rem; color; #888;">Bank BCA</p>
+                     <p id="noRekImelda" class="acc-number text-bca">4373191216</p>
+                     <button class="btn-action btn-copy" onclick="copyRek('noRekImelda', 'copymsg1')" style="pading: 4px 12px; font-size: 11px; margin-top: 5px;">Salin</button>
+                     <span id="copyMsg1" style="font-size: 10px; color: var(--lpink); opacity: 0; margin-left: 5px;">Tersalin!</span>
+                   </div>
+                 </div>
 
-                <div class="bank-row">
-                  <div class="bank-logo-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Seabank_Indonesia.png" alt="SeaBank">
-                  </div>
-                  <div class="bank-details">
-                    <p class="bank-name" style="font-size: 0.8rem; color: #888;">SeaBank</p>
-                    <p id="noRekSeabank" class="acc-number text-seabank">222222</p>
-                    <button class="btn-action btn-copy" onclick="copyRek('noRekSeabank', 'copyMsg2')" style="padding: 4px 12px; font-size: 11px; margin-top: 5px;">Salin</button>
-                    <span id="copyMsg2" style="font-size: 10px; color: var(--lpink); opacity: 0; margin-left: 5px;">Tersalin!</span>
-                  </div>
-                </div>
+                 <div class="bank-row">
+                   <div class="bank-logo-box">
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Seabank_Indonesia.png" alt="SeaBank">
+                   </div>
+                   <div class="bank-details">
+                     <p class="bank-name" style="font-size: 0.8rem; color: #888;">SeaBank</p>
+                     <p id="noRekSeabank" class="acc-number text-seabank">222222</p>
+                     <button class="btn-action btn-copy" onclick="copyRek('noRekSeabank', 'copyMsg2')" style="padding: 4px 12px; font-size: 11px; margin-top: 5px;">Salin</button>
+                     <span id="copyMsg2" style="font-size: 10px; color: var(--lpink); opacity: 0; margin-left: 5px;">Tersalin!</span>
+                   </div>
+                 </div>
 
-                <div class="bank-row">
-                  <div class="bank-logo-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Dana_logo.png" alt="DANA">
-                  </div>
-                  <div class="bank-details">
-                    <p class="bank-name" style="font-size: 0.8rem; color: #888;">Dana</p>
-                    <p id="noDana" class="acc-number text-dana">0881022384270</p>
-                    <button class="btn-action btn-copy" onclick="copyRek('noDana', 'copyMsg3')" style="padding: 4px 12px; font-size: 11px; margin-top: 5px;">Salin</button>
-                    <span id="copyMsg3" style="font-size: 10px; color: var(--lpink); opacity: 0; margin-left: 5px;">Tersalin!</span>
-                  </div>
-                </div>
-            </div>
+                 <div class="bank-row">
+                   <div class="bank-logo-box">
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Dana_logo.png" alt="DANA">
+                   </div>
+                   <div class="bank-details">
+                     <p class="bank-name" style="font-size: 0.8rem; color: #888;">Dana</p>
+                     <p id="noDana" class="acc-number text-dana">0881022384270</p>
+                     <button class="btn-action btn-copy" onclick="copyRek('noDana', 'copyMsg3')" style="padding: 4px 12px; font-size: 11px; margin-top: 5px;">Salin</button>
+                     <span id="copyMsg3" style="font-size: 10px; color: var(--lpink); opacity: 0; margin-left: 5px;">Tersalin!</span>
+                   </div>
+                 </div>
+             </div>
 
-                <div data-aos="zoom-in" data-aos-delay="200">
-                  <div class="gift-container-box">
-                    <span class="gift-owner-title">A.n Elvin Maulana</span>
-                    <div class="bank-row">
-                      <div class="bank-logo-box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA">
-                      </div>
-                      <div class="bank-details">
-                        <p class="bank-name" style="font-size: 0.8rem; color: #888;">Bank BCA</p>
-                        <p id="noRekElvin" class="acc-number text-bca">1560196373</p>
-                        <button class="btn-action btn-copy" onclick="copyRek('noRekElvin', 'copyMsg4')" style="padding: 4px 12px; font-size: 11px; margin-top: 5px;">Salin</button>
-                        <span id="copyMsg4" style="font-size:10px; color: var(--lpink); opacity: 0; margin-left: 5px;">Tersalin!</span>
-                      </div>
-                    </div>
+                 <div data-aos="zoom-in" data-aos-delay="200">
+                   <div class="gift-container-box">
+                     <span class="gift-owner-title">A.n Elvin Maulana</span>
+                     <div class="bank-row">
+                       <div class="bank-logo-box">
+                         <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA">
+                       </div>
+                       <div class="bank-details">
+                         <p class="bank-name" style="font-size: 0.8rem; color: #888;">Bank BCA</p>
+                         <p id="noRekElvin" class="acc-number text-bca">1560196373</p>
+                         <button class="btn-action btn-copy" onclick="copyRek('noRekElvin', 'copyMsg4')" style="padding: 4px 12px; font-size: 11px; margin-top: 5px;">Salin</button>
+                         <span id="copyMsg4" style="font-size:10px; color: var(--lpink); opacity: 0; margin-left: 5px;">Tersalin!</span>
+                       </div>
+                     </div>
 
-                    <div class="bank-row">
-                      <div class="bank-logo-box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Dana_logo.png" alt="Dana">
-                      </div>
-                      <div class="bank-details">
-                        <p class="bank-name" style="font-size: 0.8rem; color: #888;">Dana</p>
-                        <p id="noDanaElvin" class="acc-number text-dana">085755808573</p>
-                        <button class="btn-action btn-copy" onclick="copyRek('noDanaElvin', 'copyMsg5')" style="padding: 4px 12px; font-size: 11px; margin-top: 5px;">Salin</button>
-                        <span id="copyMsg5" style="font-size: 10px; color: var(--lpink); opacity: 0; margin-left: 5px;">Tersalin!</span>
-                      </div>
-                    </div>
-                  </div> 
-                </div>
+                     <div class="bank-row">
+                       <div class="bank-logo-box">
+                         <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Dana_logo.png" alt="Dana">
+                       </div>
+                       <div class="bank-details">
+                         <p class="bank-name" style="font-size: 0.8rem; color: #888;">Dana</p>
+                         <p id="noDanaElvin" class="acc-number text-dana">085755808573</p>
+                         <button class="btn-action btn-copy" onclick="copyRek('noDanaElvin', 'copyMsg5')" style="padding: 4px 12px; font-size: 11px; margin-top: 5px;">Salin</button>
+                         <span id="copyMsg5" style="font-size: 10px; color: var(--lpink); opacity: 0; margin-left: 5px;">Tersalin!</span>
+                       </div>
+                     </div>
+                   </div> 
+                 </div>
 
-                <div class="gift-container-box" style="text-align: center; padding: 25px" data-aos="fade-up">
-                  <i class="fas fa-gift" style="font-size: 2rem; color: var(--watermelon); margin-bottom: 10px;"></i>
-                  <p><strong>Kirim Kado</strong></p>
-                  <p id="alamat" style="color: var(--text); font-size: 0.9rem; margin: 10px 0;">Kp. Pamoyanan 001/011, Desa Margamekar, Kecamatan Paangalengan</p>
-                  <button class="btn-action" onclick="copyRek('alamat', 'copyMsg6')" style="padding: 4px 12px; font-size: 11px; margin-top: 20px;">Salin Alamat</button>
-                  <span id="copyMsg6" style="font-size: 10px; color: var(--lpink); opacity: 0; margin-top 5px;"> Alamat Tersalin!</span>
+                 <div class="gift-container-box" style="text-align: center; padding: 25px" data-aos="fade-up">
+                   <i class="fas fa-gift" style="font-size: 2rem; color: var(--watermelon); margin-bottom: 10px;"></i>
+                   <p><strong>Kirim Kado</strong></p>
+                   <p id="alamat" style="color: var(--text); font-size: 0.9rem; margin: 10px 0;">Kp. Pamoyanan 001/011, Desa Margamekar, Kecamatan Paangalengan</p>
+                 <div style="display: flex; flex-direction: column; align-items: center; width: 100% "> 
+                   <button class="btn-action btn-copy" onclick="copyRek('alamat', 'copyMsg6')" style="padding: 4px 12px; font-size: 11px; margin-top: 20px;">Salin Alamat</button>
+                   <span id="copyMsg6" style="font-size: 10px; color: var(--lpink); opacity: 0; margin-top 5px;"> Alamat Tersalin!</span>
+                 </div>
                 </div>
         </section>
 
