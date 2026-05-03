@@ -151,25 +151,8 @@
 
         /* Background Acara - Soft Dots Pattern */
         #acara { 
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            background: none !important;
-        }
-
-        .acara::before {
-          content: "";
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(cover,jpeg) center/cover no-repeat;
-          z-index: -1;
-          will-change: transform;
+            background-image: url('cover.jpeg');
+            background-size: cover;
         }
 
         .acara.container {
@@ -276,11 +259,24 @@
 
        /* Salam Sapa Section */
        .salam-section {
-         padding: 80px 20px;
-         background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('couple.png') center/cover no-repeat fixed;
-         text-align: center;
          position: relative;
+         min-height: 100vh;
+         display: flex;
+         justify-content: center;
+         overflow: hidden;
+         background: none !important;
+       }
+
+       .salam-section:before {
+         content: "";
+         position: fixed;
+         top: 0;
+         left: 0;
          width: 100%;
+         height: 100%;
+         background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(couple.png) center/cover no-repeat;
+         z-index: -1;
+         will-change: transform;
        }
 
        .salam-text {
@@ -359,7 +355,7 @@
          font-family: 'Playfair Display', serif;
          font-weight: 700;
          font-size: 1.6rem;
-         color: var(--ppink);
+         color: var(--watermelon);
          letter-spacing: 3px;
          text-transform: uppercase;
          margin-bottom: 15px;
@@ -456,10 +452,10 @@
           }
 
          .map-container {
-           padding: 20px;
+           padding: 25px;
            background: rgba(255,255,255,0.7);
            border-radius: 15px;
-           border: 1px dashe var(--watermelon);
+           border: 1px dashed var(--watermelon);
            margin: 20px 10px;
            text-align: center;
          }
@@ -696,9 +692,9 @@
 
     <div id="cover-undangan">
         <p data-aos="fade-down">You're Invited to The Wedding of</p>
-        <h1 style="font-family: 'Great Vibes', cursive; font-size: 3.5rem; margin: 15px 0;">Imelda & Elvin</h1>
+        <h1 style="font-family: 'Great Vibes', cursive; font-size: 3.5rem; margin: 15px 0;"><span data-aos="fade-right" data-aos-delay="200">Imelda</span> & <span data-aos="fade-right" data-aos-delay="200">Elvin</span></h1>
         <p>Kepada Yth:</p>
-        <h3 id="guest-name" style="margin-top: 10px; color: lavenderblush;">Tamu Undangan</h3>
+        <h3 id="guest-name" style="margin-top: 10px; color: lavenderblush;" data-aos="fade-up">Tamu Undangan</h3>
         <button class="btn-action" onclick="bukaUndangan()">Buka Undangan</button>
     </div>
 
@@ -730,7 +726,7 @@
 
           <div class="salam-divider"></div>
 
-          <p class="salam-text">
+          <p class="salam-text" data-aos="fade-up">
             Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i
             untuk hadir dan memberikan doa restu pada acara pernikahan kami:
           </p>
@@ -743,7 +739,7 @@
               <img src="cpw.png" alt="Mempelai Wanita">
             </div>
 
-        <div data-aos="fade-up">
+        <div data-aos="fade-right">
           <h3 class="role-text">The Bride</h3>
           <h2 class="catin-name-new">Imelda Yulia Putri</h2>
           <div class="parent-text">
@@ -762,7 +758,7 @@
             <img src="cpp.png" alt="Mempelai Pria">
           </div>
 
-          <div data-aos="fade-up">
+          <div data-aos="fade-left">
             <h3 class="role-text">The Groom</h3>
             <h2 class="catin-name-new">Elvin Maulana</h2>
             <div style="parent-text">
@@ -801,12 +797,8 @@
                 <p>10.00 WIB - Selesai</p>
                 <p>Yonzipur 3, Pangalengan, Bandung</p>
             </div>
-            <div class="map-wrapper">
-              <img src="hiasan.png" class="flower-float f1" alt="flower">
-              <img src="hiasan.png" class="flower-float f2" alt="flower">
-              <img src="hiasan.png" class="flower-float f3" alt="flower">
-
-              <div class="map-container" data-aos="fade-up">
+ 
+              <div class="card" data-aos="fade-up">
                 <p style="color: #666; font-size: 0.9rem; margin-bottom: 15px;">
                   klik tombol di bawah ini untuk petunjuk lokasi acara:
                 </p>
@@ -995,6 +987,9 @@
         <footer style="padding: 40px; font-size: 10px; color: #ccc;">© 2026 Elvin & Imelda Wedding</footer>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000 });
@@ -1038,8 +1033,90 @@
             document.getElementById('secs').innerText = s;
         }, 1000);
 
-        document.getElementById('formRSVP').onsubmit = (e) => { e.preventDefault(); alert("Konfirmasi Berhasil!"); };
+    // 1. Konfigurasi Firebase (Ganti dengan data dari Firebase Console milikmu)
+    const firebaseConfig = {
+        apiKey: "AIzaSyC_eYK1LShlD6oCSSUDwL0tVSIGTIv-tL8",
+        authDomain: "data-ucapan-wedding-invitation.firebaseapp.com",
+        projectId: "data-ucapan-wedding-invitation",
+        storageBucket: "data-ucapan-wedding-invitation.firebasestorage.app",
+        messagingSenderId: "554124582790",
+        appId: "1:554124582790:web:b25184cc9b72c16f211607",
+        measurementId: "G-85PYX974R8"
+     };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // 2. Fungsi Kirim RSVP ke Firebase
+    const formRSVP = document.getElementById('formRSVP');
+    formRSVP.onsubmit = async (e) => {
+        e.preventDefault();
+        
+        const btn = formRSVP.querySelector('button');
+        btn.disabled = true;
+        btn.innerText = "Mengirim...";
+
+        const data = {
+            nama: document.getElementById('nama').value,
+            status: document.getElementById('status').value,
+            ucapan: document.getElementById('ucapan').value,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        };
+
+        try {
+            await db.collection("wishes").add(data);
+            alert("Terima kasih atas doanya!");
+            formRSVP.reset();
+        } catch (error) {
+            console.error("Error: ", error);
+            alert("Gagal mengirim ucapan.");
+        } finally {
+            btn.disabled = false;
+            btn.innerText = "Kirim";
+        }
+    };
+
+     // 3. Fungsi Ambil Data Ucapan (Real-time dengan Tanggal & Waktu)
+     db.collection("wishes").orderBy("timestamp", "desc").onSnapshot((snapshot) => {
+     const commentBox = document.getElementById('comment-box');
+     commentBox.innerHTML = ""; 
+
+     snapshot.forEach((doc) => {
+         const item = doc.data();
+        
+         // Konversi Timestamp ke Format Tanggal & Waktu Indonesia
+         let tanggalWaktu = "";
+         if (item.timestamp) {
+             const date = item.timestamp.toDate();
+             tanggalWaktu = date.toLocaleString('id-ID', { 
+                 day: 'numeric', 
+                 month: 'short', 
+                 year: 'numeric', 
+                 hour: '2-digit', 
+                 minute: '2-digit' 
+             });
+         }
+
+         const div = document.createElement('div');
+         div.className = 'comment-item';
+         div.style.marginBottom = "15px"; // Jarak antar komentar
+         div.innerHTML = `
+             <div style="display: flex; justify-content: space-between; align-items: center;">
+                 <strong>${item.nama}</strong>
+                 <small style="font-size: 10px; color: #888;">${tanggalWaktu}</small>
+             </div>
+             <small style="color: ${item.status === 'Hadir' ? 'green' : 'red'}; font-weight: 600;">
+                 <i class="fas fa-${item.status === 'Hadir' ? 'check-circle' : 'times-circle'}"></i> ${item.status}
+             </small>
+             <p style="margin-top: 8px; font-style: italic; color: #555;">"${item.ucapan}"</p>
+         `;
+         commentBox.appendChild(div);
+     });
+ });
+
         const urlParams = new URLSearchParams(window.location.search);
+ 
         const to = urlParams.get('to');
         if (to) document.getElementById('guest-name').innerText = to;
     </script>
